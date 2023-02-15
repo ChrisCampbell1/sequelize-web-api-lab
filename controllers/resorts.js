@@ -2,7 +2,8 @@ const { Resort } = require("../models")
 
 const create = async (req, res) => {
   try {
-    
+    const resort = await Resort.create(req.body)
+    res.status(200).json(resort)
   } catch (error) {
     res.status(500).json(error)
   }
@@ -10,7 +11,8 @@ const create = async (req, res) => {
 
 const index = async (req, res) => {
   try {
-    
+    const resorts = await Resort.findAll()
+    res.status(200).json(resorts)
   } catch (error) {
     res.status(500).json(error)
   }
@@ -18,7 +20,8 @@ const index = async (req, res) => {
 
 const show = async (req, res) => {
   try {
-    
+    const resort = await Resort.findByPk(req.params.id)
+    res.status(200).json(resort)
   } catch (error) {
     res.status(500).json(error)
   }
@@ -26,7 +29,10 @@ const show = async (req, res) => {
 
 const update = async (req, res) => {
   try {
-    
+    const resort = await Resort.findByPk(req.params.id)
+    resort.set(req.body)
+    await resort.save()
+    res.status(200).json(resort)
   } catch (error) {
     res.status(500).json(error)
   }
@@ -34,7 +40,9 @@ const update = async (req, res) => {
 
 const deleteResort = async (req, res) => {
   try {
-    
+    const resort = await Resort.findByPk(req.params.id)
+    await resort.destroy()
+    res.status(200).json(resort)
   } catch (error) {
     res.status(500).json(error)
   }

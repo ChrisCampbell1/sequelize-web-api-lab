@@ -18,7 +18,7 @@ app.use(express.json())
 
 // mount imported routes
 app.use('/', indexRouter)
-app.use('/api/resorts', resortRouter)
+app.use('/api/resorts', resortsRouter)
 
 // handle 404 errors
 app.use(function (req, res, next) {

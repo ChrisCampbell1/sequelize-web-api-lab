@@ -5,6 +5,6 @@ router.post('/', resortsCtrl.create)
 router.get('/', resortsCtrl.index)
 router.get('/:id', resortsCtrl.show)
 router.put('/:id', resortsCtrl.update)
-router.delete('/', resortsCtrl.delete)
+router.delete('/:id', resortsCtrl.delete)
 
 module.exports = router
