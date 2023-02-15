@@ -15,7 +15,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   Resort.init({
     name: DataTypes.STRING,
-    state: DataTypes.STRING
+    state: DataTypes.STRING,
+    visited: DataTypes.BOOLEAN,
   }, {
     sequelize,
     modelName: 'Resort',
