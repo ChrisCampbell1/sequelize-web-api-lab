@@ -1,4 +1,4 @@
-const { Resort } = require("../models")
+const { Resort, Run } = require("../models")
 
 const create = async (req, res) => {
   try {
@@ -48,10 +48,21 @@ const deleteResort = async (req, res) => {
   }
 }
 
+const addRun = async (req, res) => {
+  try {
+    req.body.resortId = req.params.id
+    const run = await Run.create(req.body)
+    res.status(200).json(run)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
 module.exports = {
   create,
   index,
   show,
   update,
-  delete: deleteResort
+  delete: deleteResort,
+  addRun
 }
